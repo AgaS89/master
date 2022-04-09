@@ -45,7 +45,7 @@ public class TestHelper {
         List<String> femaleNames = new ArrayList<>();
         femaleNames.add("Agnieszka");
         femaleNames.add("Katarzyna");
-        femaleNames.add("Akicja");
+        femaleNames.add("Alicja");
         femaleNames.add("Dominika");
 
         return femaleNames;
