@@ -1,3 +1,5 @@
+package Learning;
+
 import szkolenie.Fib;
 import szkolenie.SilniaIt;
 import szkolenie.SilniaR;

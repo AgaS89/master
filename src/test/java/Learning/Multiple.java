@@ -1,3 +1,5 @@
+package Learning;
+
 public class Multiple {
 
     private double x;

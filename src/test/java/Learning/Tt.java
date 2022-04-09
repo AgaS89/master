@@ -1,3 +1,5 @@
+package Learning;
+
 public class Tt {
 
     public void showMess(String tekst){

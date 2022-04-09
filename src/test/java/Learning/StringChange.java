@@ -1,3 +1,5 @@
+package Learning;
+
 public class StringChange {
 
     public void stringChangeFor(String text){
