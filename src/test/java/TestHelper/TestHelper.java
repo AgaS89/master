@@ -34,7 +34,7 @@ public class TestHelper {
     public List<String> getMaleFirstNames(){
         List<String> maleNames = new ArrayList<>();
         maleNames.add("Krzysztof");
-        maleNames.add("Kamil");
+        maleNames.add("Grzegorz");
         maleNames.add("Kornel");
         maleNames.add("Dariusz");
 
