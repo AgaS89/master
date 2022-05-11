@@ -1,5 +1,6 @@
 package TestHelper;
 
+import javax.swing.*;
 import java.util.List;
 
 
@@ -12,6 +13,7 @@ public class Loops {
         List<String> loopsFirstNames = testHelper.getFirstNamesFM();
         List<String> loopsMaleNames = testHelper.getMaleFirstNames();
         List<String> loopsFemaleNames = testHelper.getFemaleFirstName();
+        List<Integer> loopsRandomNumbers = testHelper.getRandomNumbers(10);
 
         /**
          * Animals
@@ -134,7 +136,18 @@ public class Loops {
         System.out.println("Diffrent STREAM female: ");
          loopsFemaleNames.stream()
                 .forEach(System.out::println);
+
+
+        /**
+         * List random numbers
+          */
+        for (Integer s: loopsRandomNumbers
+             ) {
+            System.out.println(s);
+        }
     }
+
+
 
 
 

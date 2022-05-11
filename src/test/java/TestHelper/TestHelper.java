@@ -69,7 +69,6 @@ public class TestHelper {
         integerList.add(56);
         integerList.add(33);
         integerList.add(7);
-        integerList.add(100);
         integerList.add(9);
 
         return integerList;
