@@ -1,7 +1,11 @@
 package TestHelper;
 
+import org.openqa.selenium.Keys;
+
+import javax.swing.*;
 import java.util.*;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 public class Task {
 
@@ -85,7 +89,7 @@ public class Task {
                if (names.get(i).length() > maxLenghtFrmale){
                    maxLenghtFrmale = names.get(i).length();
                    femaleName = names.get(i);
-               }
+           }
            } else {
                if (names.get(i).length() < minLenghtMale){
                    minLenghtMale = names.get(i).length();
@@ -147,30 +151,169 @@ public class Task {
     }
 
     /**
-     * Przygotuj metodę, która zwróci najmniejszą liczbę z tabeli t6
+     * 6. Przygotuj metodę, która zwróci najmniejszą liczbę z tabeli t6
      */
     public Integer getMinNumber(){
         TestHelper t = new TestHelper();
        //posortuj od najmniejszej
-        List<Integer> liczba = t.getStaticNumbers().stream().sorted(Comparator.naturalOrder()).collect(Collectors.toList());
+        List<Integer> number = t.getStaticNumbers().stream().sorted(Comparator.naturalOrder()).collect(Collectors.toList());
         //przypisz do result liczbe o indeksie 0
 
-        return liczba.get(0);
+        return number.get(0);
+    }
+
+    public Integer getMinNumber2(){
+        TestHelper t = new TestHelper();
+
+        List<Integer> number = t.getStaticNumbers();
+
+        int result=0;
+        int minNumber=1000;
+
+        for (int i=0; i<number.size(); i++){
+            if (number.get(i) < minNumber){
+                minNumber = number.get(i);
+                result=number.get(i);
+            }
+        }
+        return result;
     }
 
     /**
-     * Przygotuj metodę, która zwróci średnią wartość liczb z tabeli t6
+     * 7. Przygotuj metodę, która zwróci średnią wartość liczb z tabeli t6
      * @return
      */
     public Double getAvg(){
         TestHelper t = new TestHelper();
-        List<Integer> suma = t.getStaticNumbers();
+        List<Integer> sum = t.getStaticNumbers();
         Double result=0.0;
 
-        for (int i = 0; i < suma.size(); i++){
-            result += suma.get(i);
+        for (int i = 0; i < sum.size(); i++){
+            result += sum.get(i);
         }
 
-       return result/suma.size();
+       return result/sum.size();
+    }
+
+    /**
+     * Przygotuj metodę, która zwróci najmniejszą sumę dwóch dowolnych liczb z tabeli t6
+     */
+    public Integer getMinSum(){
+        TestHelper t = new TestHelper();
+        List<Integer> numbers = t.getStaticNumbers().stream().sorted(Comparator.naturalOrder()).collect(Collectors.toList());
+        int num1 = numbers.get(0);
+        int num2 = numbers.get(1);
+
+        return num1+num2;
+    }
+
+    public Integer getMinSum2(){
+        TestHelper t = new TestHelper();
+        List<Integer> numbers = t.getStaticNumbers();
+        int sum = 10000;
+
+        for (int i = 0; i < numbers.size()-1; i++){
+            for (int j = i + 1; j < numbers.size(); j++){
+                if (numbers.get(i) + numbers.get(j) < sum){
+                    sum = numbers.get(i) + numbers.get(j);
+                }
+            }
+        }
+        return sum;
+    }
+    /**
+     * 9. Przygotuj metodę, która zwróci największą sumę dwóch kolejnych liczb z tabeli t6 wraz z wartościami które się na nią składają
+     */
+    public Integer getMaxSum1(){
+        TestHelper t = new TestHelper();
+        List<Integer> numbers = t.getStaticNumbers().stream().sorted(Comparator.reverseOrder()).collect(Collectors.toList());
+
+        return numbers.get(0)+numbers.get(1);
+    }
+
+    public Integer getMaxSum2(){
+        TestHelper t = new TestHelper();
+        List<Integer> numbers = t.getStaticNumbers();
+        int sum = -1000;
+
+        for (int i = 0; i < numbers.size()-1; i++){
+            for (int j = i + 1; j < numbers.size(); j++){
+                if (numbers.get(i) + numbers.get(j) > sum){
+                    sum = numbers.get(i)+numbers.get(j);
+                 }
+            }
+        }
+        return sum;
+    }
+
+/**
+ *10. Przygotuj metodę, która zwróci kolekcję unikalnych wartości z tabel t2+t3+t4
+ */
+public List<String> getUniqValue(){
+    TestHelper t = new TestHelper();
+    List<String> t2 = t.getFirstNamesFM();
+    List<String> t3 = t.getMaleFirstNames();
+    List<String> t4 = t.getFemaleFirstName();
+
+    List<String> finalList = Stream.of(t2,t3,t4).flatMap(Collection::stream).sorted(Comparator.naturalOrder()).distinct().collect(Collectors.toList());
+
+    return finalList;
+}
+
+    public List<String> getUniqValue2() {
+        TestHelper t = new TestHelper();
+        List<String> t2 = t.getFirstNamesFM();
+        List<String> t3 = t.getMaleFirstNames();
+        List<String> t4 = t.getFemaleFirstName();
+        List<String> result = new ArrayList();
+
+        for (int i = 0; i < t2.size(); i++) {
+            if (!result.contains(t2.get(i))){
+                result.add(t2.get(i));
+            }
+            for (int j = 0; j < t3.size(); j++){
+                if (!result.contains(t3.get(j))){
+                    result.add(t3.get(j));
+                }
+                for (int k = 0; k < t4.size(); k++){
+                    if (!result.contains(t4.get(k))){
+                        result.add(t4.get(k));
+                    }
+                }
+            }
+        }
+
+        result.sort(Comparator.naturalOrder());
+
+            return result;
+    }
+
+    /**
+     * 12. Przygotuj metodę, która zwróci kolejkcję posortowanych wartości z tabeli t6
+     */
+    public List<Integer> getSortValue(){
+        TestHelper t = new TestHelper();
+
+        return t.getStaticNumbers().stream().sorted(Comparator.naturalOrder()).collect(Collectors.toList());
+    }
+
+    /**
+     * Przygotuj metodę, która zwróci kolekcję JSON składającą się z imion i nazwisk (tabela) t4
+     */
+    public String getJsonFormat(){
+        TestHelper t = new TestHelper();
+        int minAge = 16;
+        int maxAge = 58;
+        List<String> name =t.getFirstNamesFM();
+        String fullJson = new String();
+
+
+        for (int i = 0; i < name.size(); i++){
+            fullJson = fullJson + "\n"  + " {" + "\"" + "name" + "\"" + ":" + "\"" + name.get(i) + "\"" + "," +
+                    "\"" + "lastName" + "\"" + ":" + "\"" + name.get(i) + "\"" + "}" +  ",";
+        }
+
+
+        return "[" + fullJson.substring(0, fullJson.length()-1) + "\n" + "]";
     }
 }
